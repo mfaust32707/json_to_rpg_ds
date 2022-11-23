@@ -8,7 +8,9 @@ function generate_ds() {
   var jsonObject = JSON.parse(jsonInput);
 
   var dataStruct = getStruct(jsonObject, 1);
-  console.log(dataStruct);
+  //console.log(dataStruct);
+   var jsonOutput = document.getElementById("json_output");
+   jsonOutput.value = dataStruct;
 
 }
 
