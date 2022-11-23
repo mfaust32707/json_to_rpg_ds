@@ -20,7 +20,7 @@ function getStruct(object, level) {
     var type = typeof object[key];
     var isArray = object[key] instanceof Array;
     console.log(key + " = " + isArray );
-    if (Array.isArray(object[key])) {
+    if (isArray) {
       if (typeof object[key][0] !== "object") {
         var typeNew = typeof object[key][0];
         if (typeNew === "string")
@@ -31,13 +31,14 @@ function getStruct(object, level) {
       type = "varchar(" + (object[key].length * 2).toString() + ")\n"
     }
 
-    if (type === 'object') {
-      rtnVal += spaces.substring(0,level) + "dcl-ds " + key + ";\n" +
-        getStruct(object[key], level + 1);
-      rtnVal += spaces.substring(0,level) + "end-ds;\n"
-    } else if (isArray && (typeof object[key][0]) === 'object') {
+    if (isArray && (typeof object[key][0]) === 'object') {
       rtnVal += spaces.substring(0,level) + "dcl-ds " + key + " dim(99);\n"
       getStruct(object[key][0], level + 1);
+      rtnVal += spaces.substring(0,level) + "end-ds;\n"
+    }
+    else if (type === 'object') {
+      rtnVal += spaces.substring(0,level) + "dcl-ds " + key + ";\n" +
+        getStruct(object[key], level + 1);
       rtnVal += spaces.substring(0,level) + "end-ds;\n"
     } else {
       rtnVal += spaces.substring(0,level) + key + " " + type + "\n";
