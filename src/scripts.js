@@ -3,6 +3,7 @@ let genButton = document.getElementById("generate");
 genButton.onclick = generate_ds;
 
 function generate_ds() {
+  alert("Clicked");
   var jsonInput = document.getElementById("json_input").value;
 
   var jsonObject = JSON.parse(jsonInput);
