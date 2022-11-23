@@ -19,7 +19,7 @@ function getStruct(object, level) {
   Object.keys(object).forEach(function(key) {
     var type = typeof object[key];
     var isArray = object[key] instanceof Array;
-    console.log(key + " = " + isArray );
+    console.log(key + " = " + isArray + " " + type + " " + level.toString());
     if (isArray) {
       if (typeof object[key][0] !== "object") {
         var typeNew = typeof object[key][0];
