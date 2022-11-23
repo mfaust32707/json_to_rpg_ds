@@ -33,15 +33,15 @@ function getStruct(object, level) {
     }
       
     } else if (type === "string") {
-      type = "varchar(" + (object[key].length * 2).toString() + ")\n"
+      type = "varchar(" + (object[key].length * 2).toString() + ")"
     }
 
-    if (type === 'object') {
+    if (type == 'object') {
       rtnVal += spaces.substring(0,level) + "dcl-ds " + key + ";\n" +
         getStruct(object[key], level + 1);
       rtnVal += spaces.substring(0,level) + "end-ds;\n"
     } else {
-      rtnVal += spaces.substring(0,level) + key + " " + type + "\n";
+      rtnVal += spaces.substring(0,level) + key + " " + type + ";\n";
     }
   })
   return rtnVal;
