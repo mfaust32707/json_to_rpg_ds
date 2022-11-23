@@ -10,7 +10,7 @@ function generate_ds() {
   var dataStruct = getStruct(jsonObject, 1);
   
   //console.log(dataStruct);
-  alert(dataStruct);
+  alert("Here");
   document.getElementById("json_output").value = dataStruct;
 }
 
