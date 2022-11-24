@@ -29,12 +29,12 @@ function getStruct(object, level) {
     }
       
     } else if (type === "string") {
-      tnVal +=  spaces.substring(0,level) + key + " varchar(" + (object[key].length * 2).toString() + ")";
+      rtnVal +=  spaces.substring(0,level) + key + " varchar(" + (object[key].length * 2).toString() + ")";
     }
 
     if (type == 'object') {
-      rtnVal += spaces.substring(0,level) + "dcl-ds " + key + ";\n" +
-        getStruct(object[key], level + 1);
+      rtnVal += spaces.substring(0,level) + "dcl-ds " + key + ";\n";
+      rtnVal += getStruct(object[key], level + 1);
       rtnVal += spaces.substring(0,level) + "end-ds;\n";
     } 
   });
