@@ -1,9 +1,3 @@
-console.log("Start!");
-
-let genButton = document.getElementById("generate");
-
-genButton.onclick = generate_ds;
-
 function generate_ds() {
   var jsonInput = document.getElementById("json_input").value;
 
