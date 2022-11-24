@@ -21,12 +21,12 @@ function getStruct(object, level) {
     var isArray = object[key] instanceof Array;
     console.log(key + " = " + isArray + " " + type + " " + level.toString());
     if (isArray) {
-      if (typeof object[key][0] !== "object") {
+      if ((typeof object[key][0]) !== "object") {
         var typeNew = typeof object[key][0];
         if (typeNew === "string")
           type = "varchar(" + (object[key][0].length * 2).toString() + ")  dim(99)\n"
       }
-      if (typeof object[key][0] == 'object') {
+      if ((typeof object[key][0]) == 'object') {
         rtnVal += spaces.substring(0,level) + "dcl-ds " + key + " dim(99);\n"
         getStruct(object[key][0], level + 1);
         rtnVal += spaces.substring(0,level) + "end-ds;\n"
