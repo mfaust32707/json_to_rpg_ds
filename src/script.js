@@ -30,7 +30,7 @@ function getStruct(object, level) {
     }
       
     } else if (type === "string") {
-      rtnVal +=  spaces.substring(0,level) + key + " varchar(" + (object[key].length * 2).toString() + ")";
+      rtnVal +=  spaces.substring(0,level) + key + " varchar(" + (object[key].length * 2).toString() + ");\n";
     }
 
     if (type == 'object') {
