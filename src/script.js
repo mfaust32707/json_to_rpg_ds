@@ -22,7 +22,7 @@ function getStruct(object, level) {
         if (typeNew === "string")
           rtnVal +=  spaces.substring(0,level) + key + " varchar(" + (object[key][0].length * 2).toString() + ")  dim(99);\n";
       }
-      if ((typeof object[key][0]) == 'object') {
+      if ((ty peof object[key][0]) == 'object') {
         rtnVal += spaces.substring(0,level) + "dcl-ds " + key + " dim(99);\n";
          rtnVal += getStruct(object[key][0], level + 1);
         rtnVal += spaces.substring(0,level) + "end-ds;\n";
