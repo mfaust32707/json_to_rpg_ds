@@ -1,3 +1,5 @@
+console.log("Start!");
+
 let genButton = document.getElementById("generate");
 
 genButton.onclick = generate_ds;
