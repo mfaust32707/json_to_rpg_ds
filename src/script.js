@@ -20,7 +20,7 @@ function getStruct(object, level) {
       if ((typeof object[key][0]) !== "object") {
         var typeNew = typeof object[key][0];
         if (typeNew === "string")
-          type = "varchar(" + (object[key][0].length * 2).toString() + ")  dim(99);\n";
+          rtnVal +=  spaces.substring(0,level) + key + " varchar(" + (object[key][0].length * 2).toString() + ")  dim(99);\n";
       }
       if ((typeof object[key][0]) == 'object') {
         rtnVal += spaces.substring(0,level) + "dcl-ds " + key + " dim(99);\n";
@@ -29,16 +29,14 @@ function getStruct(object, level) {
     }
       
     } else if (type === "string") {
-      type = "varchar(" + (object[key].length * 2).toString() + ")";
+      tnVal +=  spaces.substring(0,level) + key + " varchar(" + (object[key].length * 2).toString() + ")";
     }
 
     if (type == 'object') {
       rtnVal += spaces.substring(0,level) + "dcl-ds " + key + ";\n" +
         getStruct(object[key], level + 1);
       rtnVal += spaces.substring(0,level) + "end-ds;\n";
-    } else {
-      rtnVal += spaces.substring(0,level) + key + " " + type + ";\n";
-    }
+    } 
   });
   return rtnVal;
 }
