@@ -23,12 +23,12 @@ function getStruct(object, level) {
       }
       if ((typeof object[key]) == 'object') {
         rtnVal += spaces.substring(0,level) + "dcl-ds " + key + " dim(99);\n";
-       if (getChildKey(object[key]) !== "0") {
-         rtnVal += getStruct(object[key], level + 1);
+       if (getChildKey(object[key]) === "0"  && (typeof object[key][0] === "object")) {
+         rtnVal += getStruct(object[key][0], level + 1);
        } 
         else {
-         rtnVal += getStruct(object[key][0], level + 1);
-        }
+          rtnVal += getStruct(object[key], level + 1);
+       }
         rtnVal += spaces.substring(0,level) + "end-ds;\n";
     }
       
