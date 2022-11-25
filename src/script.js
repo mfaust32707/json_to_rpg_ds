@@ -17,7 +17,8 @@ function getStruct(object, level) {
     var isArray = object[key] instanceof Array;
     console.log(key + " = " + isArray + " " + type + " " + level.toString());
     if (isArray) {
-      if ((typeof object[key]) === "string") {
+      var objType varchar(20) = typeof object[key];
+      if ((objType === "string") || (objType === 'object' && getChildKey(object[key)=='0')) {
           rtnVal +=  spaces.substring(0,level) + key + " varchar(" + (object[key][0].length * 2).toString() + ")  dim(99);\n";
       }
       if ((typeof object[key]) == 'object') {
@@ -37,4 +38,14 @@ function getStruct(object, level) {
     } 
   });
   return rtnVal;
+}
+
+function getChildKey(obj) {
+    var key;
+
+    for (var k in obj) {
+        key = k;
+        break;
+    }
+  return key;
 }
