@@ -22,14 +22,15 @@ function getStruct(object, level) {
           rtnVal +=  spaces.substring(0,level) + key + " varchar(" + (object[key][0].length * 2).toString() + ")  dim(99);\n";
       }
       if ((typeof object[key]) == 'object') {
-        rtnVal += spaces.substring(0,level) + "dcl-ds " + key + " dim(99);\n";
+       
        if (getChildKey(object[key]) === "0"  && (typeof object[key][0] === "object")) {
+        rtnVal += spaces.substring(0,level) + "dcl-ds " + key + " dim(99);\n";  
          rtnVal += getStruct(object[key][0], level + 1);
+        rtnVal += spaces.substring(0,level) + "end-ds;\n";
        } 
-        else {
+        else { console.log(object[key].length);
           rtnVal += getStruct(object[key], level + 1);
        }
-        rtnVal += spaces.substring(0,level) + "end-ds;\n";
     }
       
     } else if (type === "string") {
