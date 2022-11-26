@@ -28,7 +28,7 @@ function getStruct(object, level) {
          rtnVal += getStruct(object[key][0], level + 1);
         rtnVal += spaces.substring(0,level) + "end-ds;\n";
        } 
-        else if ((typeof object[key][0]) !== "object") and object[key].length == 1) {
+        else if ((typeof object[key][0]) !== "object") && object[key].length == 1) {
           rtnVal +=  spaces.substring(0,level)  + key + " varchar(100) dim(99);\n";  
        }
     }
