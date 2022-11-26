@@ -38,7 +38,7 @@ function getStruct(object, level) {
     }
 
     else if (type == 'object') {
-      if (object[key].value !== null) {
+      if (object[key] !== null) {
         rtnVal += spaces.substring(0,level) + "dcl-ds " + key + ";\n";
         rtnVal += getStruct(object[key], level + 1);
         rtnVal += spaces.substring(0,level) + "end-ds;\n";
