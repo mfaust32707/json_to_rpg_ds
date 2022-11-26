@@ -28,8 +28,8 @@ function getStruct(object, level) {
          rtnVal += getStruct(object[key][0], level + 1);
         rtnVal += spaces.substring(0,level) + "end-ds;\n";
        } 
-        else { console.log(object[key].length);
-          rtnVal += getStruct(object[key], level + 1);
+        else if (object[key].length === 1) {
+          rtnVal +=  spaces.substring(0,level)  + key + " varchar(100) dim(99);\n";  
        }
     }
       
