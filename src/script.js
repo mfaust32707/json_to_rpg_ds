@@ -37,7 +37,7 @@ function getStruct(object, level) {
       rtnVal +=  spaces.substring(0,level) + key + " varchar(" + (object[key].length * 2).toString() + ");\n";
     }
 
-    if (type == 'object') {
+    else if (type == 'object') {
       rtnVal += spaces.substring(0,level) + "dcl-ds " + key + ";\n";
       rtnVal += getStruct(object[key], level + 1);
       rtnVal += spaces.substring(0,level) + "end-ds;\n";
